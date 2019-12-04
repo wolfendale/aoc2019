@@ -1,6 +1,7 @@
 import sbt.Keys.version
 
 lazy val commonSettings = Seq(
+  addCompilerPlugin("org.typelevel" %% "kind-projector" % "0.11.0" cross CrossVersion.full),
   scalacOptions += "-Ypartial-unification",
   libraryDependencies ++= Seq(
     "org.typelevel" %% "cats-core" % "2.0.0",
@@ -25,5 +26,11 @@ lazy val dayOne = (project in file("day-01"))
 lazy val dayTwo = (project in file("day-02"))
   .settings(
     name := "day two",
+    commonSettings
+  )
+
+lazy val dayThree = (project in file("day-03"))
+  .settings(
+    name := "day three",
     commonSettings
   )
